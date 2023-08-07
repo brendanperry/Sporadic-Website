@@ -517,7 +517,10 @@
   }
 
   .container-3 {
+    opacity: 0;
     justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
