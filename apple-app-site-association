@@ -3,6 +3,10 @@
     "apps": [],
     "details": [
     {
+      "appID": "2YHJ5G2T2P.com.brendanperry.sporadic",
+      "paths": ["*"]
+    },
+    {
       "appID": "K9JT8S56CG.com.brendanperry.sporadic",
       "paths": ["*"]
     }
