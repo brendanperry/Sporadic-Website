@@ -206,7 +206,10 @@ a {
   width: 108vw;
   margin-inline: -4vw;
   padding-block: clamp(26px, 4vw, 40px);
-  background: linear-gradient(100deg, var(--lime-light), var(--lime-dark));
+  /* White, not lime: the complete button fills lime as it is held, which is
+     invisible on a lime ground. A panel also matches the app's own surfaces,
+     and still reads as a distinct band against the warm grey page. */
+  background: var(--surface);
   transform: rotate(-1.4deg);
 }
 
@@ -218,13 +221,14 @@ a {
    the inner to 100vw re-centres it on the viewport, and the padding reproduces
    .wrap's own measure so the text lines up with the headings above and below. */
 .global__inner {
+  flex-direction: column;
+  align-items: stretch;
   width: 100vw;
   margin-inline: auto;
   padding-inline: max(var(--pad), calc((100vw - var(--measure)) / 2 + var(--pad)));
   display: flex;
   flex-wrap: wrap;
   gap: 20px 32px;
-  align-items: center;
   justify-content: space-between;
   transform: rotate(1.4deg);
 }
@@ -239,7 +243,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--button-top) 65%, transparent);
+  color: var(--ink-muted);
 }
 
 .global__headline {
@@ -254,25 +258,25 @@ a {
   font-size: clamp(24px, 3.4vw, 34px);
   font-weight: 700;
   letter-spacing: -0.015em;
-  color: var(--button-top);
+  color: var(--ink-strong);
 }
 
 .global__total {
   margin: 10px 0 0;
   font-size: 16px;
   font-weight: 500;
-  color: color-mix(in srgb, var(--button-top) 75%, transparent);
+  color: var(--ink-muted);
 }
 
-/* Mirrors CountdownBadge: clock glyph, capsule, BadgePurple. On lime the 10%
-   wash the app uses would go muddy, so the chip sits on white instead. */
+/* Mirrors CountdownBadge exactly: clock glyph, capsule, BadgePurple on a 10%
+   wash. */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   border-radius: 999px;
   padding: 4px 10px 4px 7px;
-  background: #fff;
+  background: color-mix(in srgb, var(--badge-purple) 10%, transparent);
   color: var(--badge-purple);
   font-size: 14px;
   font-weight: 500;
@@ -282,13 +286,16 @@ a {
 
 /* The app's HoldToCompleteButton: navy gradient, 50px tall, controlCornerRadius,
    with the lime progress fill sweeping left to right over the same 1.5s. */
+/* Full width until there is room to sit it beside the text, matching the app,
+   where every control is frame(maxWidth: .infinity). Capped at 260 once the row
+   goes horizontal so it does not stretch across the band. */
 .global__complete {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  min-width: 260px;
+  width: 100%;
   height: 50px;
   padding-inline: 28px;
   border-radius: var(--radius-control);
@@ -331,6 +338,12 @@ a {
 .stacks {
   padding-block: clamp(40px, 7vw, 72px);
   border-top: 1px solid var(--hairline);
+}
+
+/* When the banner is showing it separates the two sections itself; the rule is
+   only needed on the days it stays hidden. */
+.global:not([hidden]) + .stacks {
+  border-top: none;
 }
 
 .stacks h2,
@@ -454,6 +467,20 @@ a {
 }
 
 /* Centre the rail's content on wide screens without breaking the bleed. */
+@media (min-width: 700px) {
+  .global__inner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Must stay after .global__complete's own width:100%: media queries add no
+     specificity, so an earlier block would lose on source order. */
+  .global__complete {
+    width: auto;
+    min-width: 260px;
+  }
+}
+
 @media (min-width: 1200px) {
   .gallery__rail {
     padding-inline: max(var(--pad), calc((100vw - var(--measure)) / 2 + var(--pad)));
