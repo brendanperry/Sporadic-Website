@@ -378,20 +378,49 @@ a {
   border-radius: var(--radius);
 }
 
+/* The photo dissolves into the card instead of ending on a hard edge, using the
+   same stops the app masks its stack header with (StacksPage.headerView).
+   Masking the image rather than laying a white scrim over it means the fade
+   works against whatever colour the card happens to be. */
 .stack > img {
   width: 100%;
   height: 168px;
   object-fit: cover;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 45%,
+    rgba(0, 0, 0, 0.6) 72%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 45%,
+    rgba(0, 0, 0, 0.6) 72%,
+    transparent 100%
+  );
 }
 
-/* Custom Stack ships no photograph -- it is a tinted tile in the app, so it
-   stays one here rather than borrowing another Stack's image. */
+/* Custom Stack ships no photograph -- the app draws a tinted wash behind a soft,
+   blurred glyph, fading to the background the same way the photos do. */
 .stack__tile {
   display: grid;
   place-items: center;
   height: 168px;
-  color: #fff;
-  background: linear-gradient(140deg, var(--accent-bright), var(--accent));
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--accent) 55%, transparent),
+    color-mix(in srgb, var(--accent) 20%, transparent) 55%,
+    transparent 100%
+  );
+}
+
+.stack__tile svg {
+  color: var(--accent);
+  opacity: 0.35;
+  filter: blur(6px);
+  transform: translateY(-10px) scale(1.6);
 }
 
 .stack__body {
