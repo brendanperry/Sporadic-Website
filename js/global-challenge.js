@@ -124,7 +124,13 @@
     wireHold(completeEl);
   }
 
-  fetch(ENDPOINT, { mode: "cors" })
+  // cache: "no-store" is deliberate. Before the Worker served this path it fell
+  // through to GitHub Pages, which answered with a permanent redirect to www --
+  // and browsers keep a 301 indefinitely, so any visitor who loaded the page in
+  // that window would fetch www forever, miss CORS, and never see the banner.
+  // Bypassing the browser cache sidesteps that poisoned entry. Cloudflare still
+  // serves this from its edge (s-maxage), so it costs no extra CloudKit work.
+  fetch(ENDPOINT, { mode: "cors", cache: "no-store" })
     .then(function (response) {
       if (!response.ok) throw new Error("stats " + response.status);
       return response.json();
