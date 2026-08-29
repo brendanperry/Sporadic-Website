@@ -1,0 +1,291 @@
+/* Sporadic — sporadic.app
+   Palette sampled from the 4.0.0 app screenshots so the site and the app read
+   as the same product. */
+
+:root {
+  --bg: #e6e6e2;
+  --surface: #fff;
+  --ink: #24375b;
+  --ink-deep: #1e2f50;
+  --ink-muted: #5d6c88;
+  --accent: #b13aff;
+  --accent-bright: #c25aff;
+  --hairline: #d3d4cf;
+
+  --measure: 1120px;
+  --radius: 20px;
+  --pad: clamp(20px, 5vw, 40px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Lexend, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding-inline: var(--pad);
+}
+
+/* ---------- header ---------- */
+
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-block: 22px;
+}
+
+.masthead__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+}
+
+.masthead__name {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.masthead__cta {
+  margin-left: auto;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background: var(--ink-deep);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: #16233d;
+}
+
+.btn--ghost {
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  padding-block: 11px;
+}
+
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding-block: clamp(48px, 9vw, 96px) clamp(40px, 7vw, 72px);
+  max-width: 780px;
+}
+
+.hero h1 {
+  margin: 0 0 20px;
+  font-size: clamp(38px, 7vw, 66px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.hero h1 em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.hero p {
+  margin: 0 0 32px;
+  font-size: clamp(18px, 2.3vw, 21px);
+  color: var(--ink-muted);
+  max-width: 60ch;
+}
+
+.hero__note {
+  margin: 16px 0 0;
+  font-size: 15px;
+  color: var(--ink-muted);
+}
+
+/* ---------- steps ---------- */
+
+.steps {
+  padding-block: clamp(40px, 7vw, 72px);
+  border-top: 1px solid var(--hairline);
+}
+
+.steps h2,
+.gallery h2 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4.4vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.section__lede {
+  margin: 0 0 40px;
+  color: var(--ink-muted);
+  max-width: 58ch;
+}
+
+.steps__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.step {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.step h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.step p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 16px;
+}
+
+/* ---------- gallery ---------- */
+
+.gallery {
+  padding-block: clamp(40px, 7vw, 72px);
+  border-top: 1px solid var(--hairline);
+}
+
+/* Full-bleed rail: the strip scrolls edge to edge, but its first card still
+   lines up with the text above it. */
+.gallery__rail {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* Without a matching scroll-padding the snapport ignores padding-inline and
+     snaps the first card flush to the edge, out of line with the heading. */
+  scroll-padding-inline: var(--pad);
+  padding-inline: var(--pad);
+  padding-bottom: 16px;
+  margin-inline: calc(50% - 50vw);
+  scrollbar-width: thin;
+}
+
+/* min-width on the items is deliberate: a flex item's automatic minimum size is
+   its content size, which would hold these images at their intrinsic 560px and
+   ignore the basis entirely. */
+.gallery__rail > * {
+  flex: 0 0 auto;
+  width: clamp(220px, 62vw, 280px);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.gallery__rail img {
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* Centre the rail's content on wide screens without breaking the bleed. */
+@media (min-width: 1200px) {
+  .gallery__rail {
+    padding-inline: max(var(--pad), calc((100vw - var(--measure)) / 2 + var(--pad)));
+  }
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  padding-block: clamp(40px, 6vw, 64px);
+  border-top: 1px solid var(--hairline);
+}
+
+.footer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.footer__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+  font-size: 15px;
+  color: var(--ink-muted);
+}
+
+.footer__meta a {
+  color: var(--ink-muted);
+}
+
+.footer__meta p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
