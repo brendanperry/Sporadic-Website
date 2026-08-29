@@ -1,7 +1,7 @@
 /**
- * Fills in the "Today's global challenge" card from the share Worker.
+ * Fills in the "Today's global challenge" banner from the share Worker.
  *
- * The card ships hidden and is only revealed once real data arrives, so every
+ * The banner ships hidden and is only revealed once real data arrives, so every
  * failure path -- offline, CloudKit down, no challenge running, too few people
  * finished -- leaves the page exactly as it was served. Nothing here should
  * ever produce a spinner or a zero.
@@ -13,13 +13,46 @@
   "use strict";
 
   var ENDPOINT = "https://sporadic.app/_stats/global-challenge";
+  /** Matches HoldToCompleteButton.holdDuration, and the CSS fill transition. */
+  var HOLD_MS = 1500;
 
   var section = document.getElementById("global-challenge");
   var nameEl = document.getElementById("global-name");
   var totalEl = document.getElementById("global-total");
   var countdownEl = document.getElementById("global-countdown");
   var timeEl = document.getElementById("global-time");
-  if (!section || !nameEl || !totalEl || !countdownEl || !timeEl) return;
+  var completeEl = document.getElementById("global-complete");
+  if (!section || !nameEl || !totalEl || !countdownEl || !timeEl || !completeEl) return;
+
+  /** Mirrors Challenge.getLabel(): the unit loses its "s" for a single one. */
+  function label(unit, amount) {
+    if (amount === 1 && unit.charAt(unit.length - 1) === "s") return unit.slice(0, -1);
+    return unit;
+  }
+
+  /**
+   * Mirrors Challenge.displayText so the banner reads exactly like the app:
+   * "7 Push Ups", "Wall Sits for 35 seconds", "Walking 3 miles".
+   */
+  function displayText(challenge) {
+    var amount = challenge.amount;
+    var name = challenge.activityName;
+    var unit = label(challenge.unit || "", amount);
+
+    switch (challenge.unit) {
+      case "reps":
+        return amount + " " + name;
+      case "seconds":
+      case "minutes":
+        return name + " for " + amount + " " + unit;
+      case "miles":
+      case "laps":
+      case "sets":
+        return name + " " + amount + " " + unit;
+      default:
+        return amount + " " + name;
+    }
+  }
 
   /** Mirrors Challenge.timeRemaining in the app so both read identically. */
   function timeRemaining(endTime) {
@@ -35,19 +68,44 @@
     return seconds + "s";
   }
 
+  /**
+   * Press-and-hold sweeps the lime fill like the app's button does, and holding
+   * it out follows the link. It stays a plain anchor underneath, so a click,
+   * a tap, or the keyboard all still just work.
+   */
+  function wireHold(anchor) {
+    var timer = null;
+
+    var stop = function () {
+      window.clearTimeout(timer);
+      timer = null;
+      anchor.classList.remove("is-holding");
+    };
+
+    anchor.addEventListener("pointerdown", function () {
+      if (timer) return;
+      anchor.classList.add("is-holding");
+      timer = window.setTimeout(function () {
+        stop();
+        window.location.href = anchor.href;
+      }, HOLD_MS);
+    });
+
+    ["pointerup", "pointerleave", "pointercancel"].forEach(function (event) {
+      anchor.addEventListener(event, stop);
+    });
+  }
+
   function render(challenge) {
     // Totals are cached for a few minutes, so a challenge can expire between
     // the Worker generating this and the page reading it.
     if (challenge.endTime <= Date.now()) return;
 
-    var unit = challenge.unit ? " " + challenge.unit : "";
-    nameEl.textContent = challenge.amount
-      ? challenge.amount + unit + " of " + challenge.activityName
-      : challenge.activityName;
+    nameEl.textContent = displayText(challenge);
     totalEl.textContent =
       challenge.totalAmount.toLocaleString() +
       (challenge.unit ? " " + challenge.unit : "") +
-      " completed worldwide today";
+      " completed worldwide";
 
     section.hidden = false;
 
@@ -62,6 +120,8 @@
     tick();
     countdownEl.hidden = false;
     var timer = window.setInterval(tick, 1000);
+
+    wireHold(completeEl);
   }
 
   fetch(ENDPOINT, { mode: "cors" })
@@ -73,6 +133,6 @@
       if (data && data.challenge) render(data.challenge);
     })
     .catch(function () {
-      /* Leave the card hidden -- the page reads fine without it. */
+      /* Leave the banner hidden -- the page reads fine without it. */
     });
 })();

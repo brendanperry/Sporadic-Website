@@ -33,36 +33,50 @@
   <header class="wrap masthead">
     <img src="images/icon.png" alt="" class="masthead__icon" width="44" height="44">
     <p class="masthead__name">Sporadic</p>
-    <a href="https://apps.apple.com/us/app/sporadic/id1574130060" class="btn btn--ghost masthead__cta">Get the app</a>
   </header>
 
   <main>
-    <section class="wrap hero">
-      <h1>Stop scrolling. <em>Start moving.</em> No excuses.</h1>
-      <p class="hero__lede">Sporadic drops short, random exercise challenges into your day. Choose a
-        stack, invite your friends, and build your streak. Get up, get active, get Sporadic.</p>
-      <a href="https://apps.apple.com/us/app/sporadic/id1574130060" class="btn btn--primary">Download on the App Store</a>
-      <p class="hero__note">Free to download. Requires iPhone.</p>
+    <section class="hero">
+      <div class="wrap hero__inner">
+        <div class="hero__copy">
+          <h1>Stop scrolling. <em>Start moving.</em> No excuses.</h1>
+          <p class="hero__lede">Sporadic drops short, random exercise challenges into your day. Choose
+            a stack, invite your friends, and build your streak. Get up, get active, get Sporadic.</p>
+          <a href="https://apps.apple.com/us/app/sporadic/id1574130060" class="appstore">
+            <img src="images/app-store-badge.svg" width="120" height="40" alt="Download on the App Store">
+          </a>
+        </div>
+        <div class="hero__phone" aria-hidden="true"></div>
+      </div>
     </section>
 
     <!-- Populated from the share Worker's /_stats endpoint. Stays hidden unless
          a global challenge is live and enough people have finished it, so the
          page never renders a spinner, a zero, or an embarrassing number. -->
-    <section class="wrap global" id="global-challenge" hidden>
-      <div class="global__card">
-        <p class="global__eyebrow">Today's global challenge</p>
-        <div class="global__headline">
-          <h2 class="global__name" id="global-name"></h2>
-          <span class="badge" id="global-countdown" hidden>
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor"
-              stroke-width="1.6" aria-hidden="true">
-              <circle cx="8" cy="8" r="6.2" />
-              <path d="M8 4.6V8l2.4 1.6" stroke-linecap="round" />
-            </svg>
-            <span id="global-time"></span> left
-          </span>
+    <section class="global" id="global-challenge" hidden>
+      <div class="global__band">
+        <div class="wrap global__inner">
+          <div class="global__text">
+            <p class="global__eyebrow">Today's global challenge</p>
+            <div class="global__headline">
+              <h2 class="global__name" id="global-name"></h2>
+              <span class="badge" id="global-countdown" hidden>
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor"
+                  stroke-width="1.6" aria-hidden="true">
+                  <circle cx="8" cy="8" r="6.2" />
+                  <path d="M8 4.6V8l2.4 1.6" stroke-linecap="round" />
+                </svg>
+                <span id="global-time"></span> left
+              </span>
+            </div>
+            <p class="global__total" id="global-total"></p>
+          </div>
+          <a class="global__complete" id="global-complete"
+            href="https://apps.apple.com/us/app/sporadic/id1574130060">
+            <span class="global__fill" aria-hidden="true"></span>
+            <span class="global__completeLabel">Hold to complete</span>
+          </a>
         </div>
-        <p class="global__total" id="global-total"></p>
       </div>
     </section>
 
@@ -147,8 +161,10 @@
 
   <footer class="wrap footer">
     <div class="footer__actions">
-      <a href="https://apps.apple.com/us/app/sporadic/id1574130060" class="btn btn--primary">Download on the App Store</a>
-      <a href="mailto:support@perrysoftware.com?subject=My%20thoughts%20about%20Sporadic" class="btn btn--ghost">Contact us</a>
+      <a href="https://apps.apple.com/us/app/sporadic/id1574130060" class="appstore">
+        <img src="images/app-store-badge.svg" width="120" height="40" alt="Download on the App Store">
+      </a>
+      <a href="mailto:support@perrysoftware.com?subject=My%20thoughts%20about%20Sporadic" class="btn btn--secondary">Contact us</a>
     </div>
     <div class="footer__meta">
       <p>© Copyright Perry Software LLC 2026</p>
