@@ -9,7 +9,7 @@
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="css/sporadic.css" rel="stylesheet" type="text/css">
 
   <link href="images/icon.png" rel="shortcut icon" type="image/png">
@@ -38,43 +38,100 @@
 
   <main>
     <section class="wrap hero">
-      <h1>Random challenges. Real friends. <em>No gym.</em></h1>
-      <p>Sporadic drops short exercise challenges into your day — and your group's — throughout the
-        week. Pick a Stack, set how hard it goes, and race each other to finish before the clock
-        runs out.</p>
+      <h1>Stop scrolling. <em>Start moving.</em> No excuses.</h1>
+      <p class="hero__lede">Sporadic drops short, random exercise challenges into your day. Choose a
+        stack, invite your friends, and build your streak. Get up, get active, get Sporadic.</p>
       <a href="https://apps.apple.com/us/app/sporadic/id1574130060" class="btn btn--primary">Download on the App Store</a>
       <p class="hero__note">Free to download. Requires iPhone.</p>
     </section>
 
-    <section class="wrap steps">
-      <h2>How it works</h2>
-      <p class="section__lede">Three decisions up front, then Sporadic handles the timing.</p>
-      <div class="steps__grid">
-        <div class="step">
-          <div class="step__num" aria-hidden="true">1</div>
-          <h3>Pick a Stack</h3>
-          <p>Start with a ready-made Stack — Office Breaks, Wake Up Call, Daily Push-Ups, Walk
-            Reminders — or build a custom one from the exercises you actually like.</p>
+    <!-- Populated from the share Worker's /_stats endpoint. Stays hidden unless
+         a global challenge is live and enough people have finished it, so the
+         page never renders a spinner, a zero, or an embarrassing number. -->
+    <section class="wrap global" id="global-challenge" hidden>
+      <div class="global__card">
+        <p class="global__eyebrow">Today's global challenge</p>
+        <div class="global__headline">
+          <h2 class="global__name" id="global-name"></h2>
+          <span class="badge" id="global-countdown" hidden>
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor"
+              stroke-width="1.6" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.2" />
+              <path d="M8 4.6V8l2.4 1.6" stroke-linecap="round" />
+            </svg>
+            <span id="global-time"></span> left
+          </span>
         </div>
-        <div class="step">
-          <div class="step__num" aria-hidden="true">2</div>
-          <h3>Set the difficulty</h3>
-          <p>Light, Medium, or Tough. Sporadic scales the reps to match, then decides when the
-            challenges show up so you can't plan around them.</p>
-        </div>
-        <div class="step">
-          <div class="step__num" aria-hidden="true">3</div>
-          <h3>Move together</h3>
-          <p>Challenges land for your whole group at once. Hold to complete, keep the streak going,
-            and watch your totals climb in Insights.</p>
-        </div>
+        <p class="global__total" id="global-total"></p>
       </div>
+    </section>
+
+    <section class="wrap stacks">
+      <h2>Your antidote to doom scrolling</h2>
+      <p class="section__lede">Grab a stack that fits you or create one with its own schedule and
+        exercises.</p>
+      <ul class="stacks__grid">
+        <li class="stack">
+          <img src="images/stack-get-up-get-active.jpg" width="640" height="428" loading="lazy" alt="">
+          <div class="stack__body">
+            <h3>Get Up, Get Active <span class="tag tag--free">Free</span></h3>
+            <p>Get a mix of all-body exercises. The classic Sporadic experience.</p>
+          </div>
+        </li>
+        <li class="stack">
+          <img src="images/stack-office-breaks.jpg" width="640" height="431" loading="lazy" alt="">
+          <div class="stack__body">
+            <h3>Office Breaks <span class="tag">Pro</span></h3>
+            <p>Light, desk-friendly exercises spread across your workday.</p>
+          </div>
+        </li>
+        <li class="stack">
+          <img src="images/stack-walk-reminders.jpg" width="640" height="428" loading="lazy" alt="">
+          <div class="stack__body">
+            <h3>Walk Reminders <span class="tag">Pro</span></h3>
+            <p>Take quick walks to keep the blood flowing and mood up.</p>
+          </div>
+        </li>
+        <li class="stack">
+          <img src="images/stack-lower-body-boost.jpg" width="640" height="428" loading="lazy" alt="">
+          <div class="stack__body">
+            <h3>Lower Body Boost <span class="tag">Pro</span></h3>
+            <p>Exercises that engage and strengthen the lower body.</p>
+          </div>
+        </li>
+        <li class="stack">
+          <img src="images/stack-wake-up-call.jpg" width="640" height="430" loading="lazy" alt="">
+          <div class="stack__body">
+            <h3>Wake Up Call <span class="tag">Pro</span></h3>
+            <p>A single challenge every morning to help you get moving.</p>
+          </div>
+        </li>
+        <li class="stack">
+          <img src="images/stack-daily-push-ups.jpg" width="640" height="428" loading="lazy" alt="">
+          <div class="stack__body">
+            <h3>Daily Push-Ups <span class="tag">Pro</span></h3>
+            <p>Push-ups only. Whenever we say so.</p>
+          </div>
+        </li>
+        <li class="stack stack--custom">
+          <div class="stack__tile" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+              <path d="M12 2.5l1.9 5.1 5.1 1.9-5.1 1.9L12 16.5l-1.9-5.1L5 9.5l5.1-1.9L12 2.5z" />
+              <path d="M18.5 14.5l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9.9-2.4z" />
+            </svg>
+          </div>
+          <div class="stack__body">
+            <h3>Custom Stack <span class="tag">Pro</span></h3>
+            <p>Curate your own custom exercises, difficulty, &amp; schedule.</p>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <section class="gallery">
       <div class="wrap">
         <h2>A closer look</h2>
-        <p class="section__lede">Stacks, group challenges, streaks, and stats on your Home Screen.</p>
+        <p class="section__lede">See the app with screenshots from the App Store.</p>
       </div>
       <div class="gallery__rail" role="region" aria-label="App screenshots" tabindex="0">
         <img src="images/shot-1.jpg" width="560" height="1216" loading="lazy" alt="The Challenges screen listing a 12 push-up group challenge and a daily global challenge.">
@@ -98,6 +155,8 @@
       <a href="privacy-policy.html">Privacy policy</a>
     </div>
   </footer>
+
+  <script src="js/global-challenge.js" defer></script>
 </body>
 
 </html>
