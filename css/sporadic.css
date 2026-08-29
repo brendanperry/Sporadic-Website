@@ -211,8 +211,16 @@ a {
 }
 
 /* Counter-rotated so the band reads as tilted tape while the content inside
-   stays level and legible. */
+   stays level and legible.
+
+   It cannot use .wrap: the band is deliberately wider than the viewport, so a
+   container centred inside *it* lands 4vw left of every other section. Pinning
+   the inner to 100vw re-centres it on the viewport, and the padding reproduces
+   .wrap's own measure so the text lines up with the headings above and below. */
 .global__inner {
+  width: 100vw;
+  margin-inline: auto;
+  padding-inline: max(var(--pad), calc((100vw - var(--measure)) / 2 + var(--pad)));
   display: flex;
   flex-wrap: wrap;
   gap: 20px 32px;

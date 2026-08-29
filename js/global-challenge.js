@@ -69,9 +69,14 @@
   }
 
   /**
-   * Press-and-hold sweeps the lime fill like the app's button does, and holding
-   * it out follows the link. It stays a plain anchor underneath, so a click,
-   * a tap, or the keyboard all still just work.
+   * Press-and-hold sweeps the lime fill like the app's button does, and only
+   * opens the App Store once the fill completes -- releasing early cancels it.
+   *
+   * The element stays an anchor for its semantics and keyboard behaviour, but a
+   * pointer click has to be suppressed: otherwise the browser follows the href
+   * the moment the press is released, long before the fill has run. A
+   * keyboard-triggered click reports detail === 0, so that one is let through
+   * and Enter/Space still activate the link normally.
    */
   function wireHold(anchor) {
     var timer = null;
@@ -81,6 +86,10 @@
       timer = null;
       anchor.classList.remove("is-holding");
     };
+
+    anchor.addEventListener("click", function (event) {
+      if (event.detail > 0) event.preventDefault();
+    });
 
     anchor.addEventListener("pointerdown", function () {
       if (timer) return;
