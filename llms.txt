@@ -1,0 +1,50 @@
+# Sporadic
+
+> Sporadic is an iPhone and iPad app (also runs on Apple Vision Pro) that sends short exercise challenges at random times through your day, like "do 20 push-ups in the next hour." You pick a stack of exercises, and Sporadic picks the exercise, the rep count, and the time. Made by Perry Software LLC, run by Brendan Perry.
+
+Sporadic is a supplement to working out, not a workout program. It is built for people who sit at a desk all day, work from home, or can't stick to a scheduled workout plan. No equipment is needed for any preset stack.
+
+## How it works
+
+- Pick one or more stacks. Each stack has a set of exercises, the days it runs, how many challenges a day, and how long you have to finish each one.
+- A notification arrives at a random time (or a fixed time in schedule mode) telling you what to do.
+- Do the exercise and mark it complete in the app. Finishing on time keeps your streak going. Missing one resets the streak, but lifetime stats are kept.
+- Invite friends to a group to do the same challenges together.
+
+## Stacks
+
+- Get Up, Get Active (free): push-ups, squats, jumping jacks, crunches, lunges, burpees, planks, wall sits. Random, 2-4 a day, every day.
+- Office Breaks (Pro): neck rolls, shoulder rolls, wrist stretch, stretch. 9am, 12pm and 2:30pm, Monday to Friday.
+- Walk Reminders (Pro): walking. Random, 1-3 a day, 2-hour window to complete.
+- Lower Body Boost (Pro): lower-body exercises.
+- Wake Up Call (Pro): one challenge every morning.
+- Daily Push-Ups (Pro): push-ups only, 2-4 a day, 1 hour to complete.
+- Custom Stack (Pro): your own exercises, difficulty, and schedule.
+
+## Pricing
+
+- Free to start, with in-app purchases. The Get Up, Get Active stack is free; Sporadic Pro unlocks the other stacks and custom stacks.
+
+## Pages
+
+- [Home](https://www.sporadic.app/): what Sporadic is, with the list of stacks.
+- [Movement reminders for people who sit at a desk all day](https://www.sporadic.app/movement-at-work/): how Sporadic fits a desk job, what a typical day looks like, research on short bouts of movement, and an FAQ.
+- [Blog](https://www.sporadic.app/blog/): articles on moving more during the workday.
+- [Privacy policy](https://www.sporadic.app/privacy-policy.html)
+
+## Articles
+
+<!-- posts:begin -->
+- [75 Soft challenge](https://www.sporadic.app/blog/75-soft-challenge/): The 75 Soft challenge rules, the two versions you'll see most, what to decide before day 1, and what experts say to watch out for.
+- [Why you're tired in the afternoon, and how to beat the 3pm slump](https://www.sporadic.app/blog/afternoon-slump/): The afternoon slump is mostly your body clock, not your lunch. Why it hits around 2-3pm, what the research says about moving instead of more coffee, and a plan for your desk.
+- [Exercises for people who sit at a desk all day](https://www.sporadic.app/blog/exercises-for-people-who-sit-all-day/): Desk exercises you can do in 90 seconds with no equipment, how often to get up, and why scheduled breaks fall apart. Office workers sit 10.6 hours a day.
+- [Grease the groove: what it is and how to do it](https://www.sporadic.app/blog/grease-the-groove/): Grease the groove means lots of easy sets spread through your day, never to failure. How to set it up for push-ups or pull-ups, and how to remember to do your sets.
+- [How to stay consistent with working out when you keep quitting](https://www.sporadic.app/blog/how-to-stay-consistent-with-working-out/): If you keep quitting workout plans, it's probably the plan, not you. Why one missed session ends everything, which part of a plan breaks, and what to do instead.
+- [What are exercise snacks, and do they work?](https://www.sporadic.app/blog/what-are-exercise-snacks/): An exercise snack is a short burst of effort, usually under 2 minutes, repeated through the day. What the research shows and how to stick with it.
+- [The best workout accountability apps, and which kind fits you](https://www.sporadic.app/blog/workout-accountability-apps/): Sweatmates, GymRats, WayBetter, Forfeit and Sporadic compared. Partner wagers, group leaderboards, money on the line, or a nudge to move: which kind of accountability works for you.
+<!-- posts:end -->
+
+## Links
+
+- [App Store](https://apps.apple.com/us/app/sporadic/id1574130060)
+- Contact: support@perrysoftware.com
