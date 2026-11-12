@@ -606,6 +606,14 @@ a {
   margin: 0;
 }
 
+.footer__badges {
+  margin-top: 28px;
+}
+
+.footer__badges img {
+  display: block;
+}
+
 /* ---------- articles & pillar pages ----------
    Everything below is scoped to .article / .postlist and is only pulled in by
    the blog and the movement-at-work pillar page. index.html renders identically
