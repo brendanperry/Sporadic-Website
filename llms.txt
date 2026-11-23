@@ -35,6 +35,7 @@ Sporadic is a supplement to working out, not a workout program. It is built for 
 ## Articles
 
 <!-- posts:begin -->
+- [Sporadic + Siri in version 4.2.0](https://www.sporadic.app/blog/whats-new-in-sporadic-4-2-0/): Sporadic 4.2.0 is out. Here's what's new and how to get it.
 - [75 Soft challenge](https://www.sporadic.app/blog/75-soft-challenge/): The 75 Soft challenge rules, the two versions you'll see most, what to decide before day 1, and what experts say to watch out for.
 - [Why you're tired in the afternoon, and how to beat the 3pm slump](https://www.sporadic.app/blog/afternoon-slump/): The afternoon slump is mostly your body clock, not your lunch. Why it hits around 2-3pm, what the research says about moving instead of more coffee, and a plan for your desk.
 - [Exercises for people who sit at a desk all day](https://www.sporadic.app/blog/exercises-for-people-who-sit-all-day/): Desk exercises you can do in 90 seconds with no equipment, how often to get up, and why scheduled breaks fall apart. Office workers sit 10.6 hours a day.
