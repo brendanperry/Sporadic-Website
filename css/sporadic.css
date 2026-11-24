@@ -1029,3 +1029,4 @@ a {
 .article figure img { display: block; max-width: 100%; height: auto; border-radius: 16px; }
 .article figure figcaption { font-size: 14px; color: inherit; opacity: .7; margin-top: 8px; }
 .article figure.figure--phone img { max-width: 320px; margin: 0 auto; border-radius: 24px; }
+.article figure.figure--phone figcaption { text-align: center; }
