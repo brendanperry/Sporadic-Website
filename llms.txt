@@ -36,6 +36,7 @@ Sporadic is a supplement to working out, not a workout program. It is built for 
 
 <!-- posts:begin -->
 - [The 1,000 push-up challenge I'm doing with my dad and brother](https://www.sporadic.app/blog/1000-push-up-challenge/): 1,000 push-ups each, me, my dad, and my brother. 30 days to complete.
+- [My home office workout routine: how I use Sporadic to beat desk fatigue](https://www.sporadic.app/blog/my-office-workout-routine/): Short exercise breaks through the workday instead of one big workout. The exact Sporadic stacks exercises I use to avoid desk fatigue.
 - [Sporadic + Siri in version 4.2.0](https://www.sporadic.app/blog/whats-new-in-sporadic-4-2-0/): Sporadic 4.2.0 adds Siri. Ask Siri what your active challenges are, or complete one with your voice. Here's how to use it.
 - [75 Soft challenge](https://www.sporadic.app/blog/75-soft-challenge/): The 75 Soft challenge rules, the two versions you'll see most, what to decide before day 1, and what experts say to watch out for.
 - [Why you're tired in the afternoon, and how to beat the 3pm slump](https://www.sporadic.app/blog/afternoon-slump/): The afternoon slump is mostly your body clock, not your lunch. Why it hits around 2-3pm, what the research says about moving instead of more coffee, and a plan for your desk.
